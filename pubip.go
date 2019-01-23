@@ -9,6 +9,7 @@ import (
 	storestruct "github.com/mbarbita/golib-storestruct"
 )
 
+// PubIP is a struct to work with current ip and store old ip
 type PubIP struct {
 	IP string
 }
@@ -34,6 +35,7 @@ func main() {
 		if err = storestruct.Load("pubip.txt", oldpubip); err != nil {
 			log.Fatalln(err)
 		}
+
 		log.Println("Old public IP:   ", oldpubip.IP)
 		if pubip.IP == oldpubip.IP {
 			log.Println("Same IP, quitting.")
@@ -49,15 +51,6 @@ func main() {
 	}
 
 	cfgMap := cfgutils.ReadCfgFile("cfg.ini")
-
-	// var (
-	// 	hostname = cfgMap["hostname"]
-	// 	port     = cfgMap["port"]
-	// 	username = cfgMap["username"]
-	// 	pass     = cfgMap["pass"]
-	// 	from     = cfgMap["from"]
-	// 	to       = cfgMap["to"]
-	// )
 
 	// Set up authentication information.
 	auth := smtp.PlainAuth("",
