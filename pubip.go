@@ -52,6 +52,11 @@ func main() {
 
 	cfgMap := cfgutils.ReadCfgFile("cfg.ini")
 
+	if cfgMap["test"] == "yes" {
+		log.Println("Test only, quitting.")
+		return
+	}
+
 	// Set up authentication information.
 	auth := smtp.PlainAuth("",
 		cfgMap["username"],
