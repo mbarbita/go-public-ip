@@ -50,7 +50,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	cfgMap := cfgutils.ReadCfgFile("cfg.ini")
+	cfgMap := cfgutils.ReadCfgFile("cfg.ini", true)
 
 	if cfgMap["test"] == "yes" {
 		log.Println("Test only, quitting.")
